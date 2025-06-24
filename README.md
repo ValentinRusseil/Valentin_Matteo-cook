@@ -9,7 +9,6 @@ et modifier leurs recettes préférées.
 
 -   [Matteo PEREIRA](https://github.com/Aairuxul) - @Aairuxul
 -   [Valentin RUSSEIL](https://github.com/ValentinRusseil) - @ValentinRusseil
--   [Enzo MORIN](https://github.com/Zowx) - @Zowx
 
 ## Structure du Projet
 
