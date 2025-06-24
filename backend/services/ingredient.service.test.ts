@@ -72,6 +72,18 @@ Deno.test('updateIngredientService throws NotFoundException if ingredient not fo
     );
 });
 
+Deno.test('updateIngredientService - cas ingredient id non trouvé', async () => {
+    const mockRepo = {
+        getIngredientById: (id: string) => Promise.resolve(null),
+        updateIngredient: (ingredient: Ingredient) => Promise.resolve(ingredient)
+    };
+    await assertRejects(
+        () => updateIngredientService({ id: '999', nom: 'Nonexistent' }, mockRepo as any),
+        NotFoundException,
+        'No id found for this ingredient'
+    );
+});
+
 Deno.test('deleteIngredientService deletes an ingredient', async () => {
     const mockRepo = {
         getIngredientById: (id: string) => Promise.resolve(id === '1' ? fakeIngredient : null),
