@@ -315,7 +315,7 @@ Deno.test("updateRecetteService - Cas ingrédient non trouvé", async () => {
     const getRecetteByIdMock = async (id: string): Promise<Recette> => {
         return recette;
     };
-    const getIngredientByIdMock = async (id: string): Promise<{ id: string; nom: string }> => {
+    const getIngredientByIdMock = async (id: string): Promise<Recette> => {
         throw new Error("Ingredient with id non_existent_ingredient_id does not exist, but got \"Ingredient not found\".");
     };
 

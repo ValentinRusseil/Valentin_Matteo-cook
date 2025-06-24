@@ -19,7 +19,7 @@ export const createIngredientService = async (ingredientCandidate: IngredientCan
 };
 
 export const updateIngredientService = async (ingredient: Ingredient, repository = ingredientRepository): Promise<Ingredient> => {
-    const idexist = await getIngredientByIdService(ingredient.id);
+    const idexist = await repository.getIngredientById(ingredient.id);
     if (!idexist) {
         throw new NotFoundException('No id found for this ingredient');
     }

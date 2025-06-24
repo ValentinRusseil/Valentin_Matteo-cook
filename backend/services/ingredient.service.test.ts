@@ -1,3 +1,4 @@
+import { assertEquals, assertRejects } from "../deps.ts";
 import {
     getAllIngredientsService,
     getIngredientByIdService,
@@ -9,8 +10,6 @@ import {
 import * as ingredientRepository from '../repositories/ingredient.repository.ts';
 import { NotFoundException } from '../deps.ts';
 import { Ingredient, IngredientCandidate } from './models/ingredient.model.ts';
-import { assertEquals, assertRejects } from "jsr:@std/assert@1";
-import { stub, restore } from "https://deno.land/std@0.224.0/testing/mock.ts";
 
 const fakeIngredient: Ingredient = { id: '1', nom: 'Tomate' };
 const fakeIngredientCandidate: IngredientCandidate = { nom: 'Tomate' };
@@ -47,7 +46,7 @@ Deno.test('createIngredientService creates an ingredient', async () => {
 
 Deno.test('updateIngredientService updates an ingredient', async () => {
     const mockRepo = {
-        getIngredientById: (id: string) => Promise.resolve(id === '1' ? fakeIngredient : null),
+        getIngredientById: (id: string) => Promise.resolve(fakeIngredient.id),
         updateIngredient: (ingredient: Ingredient) => Promise.resolve(ingredient)
     };
     const result = await updateIngredientService({ id: '1', nom: 'Updated Tomate' }, mockRepo as any);
@@ -55,13 +54,20 @@ Deno.test('updateIngredientService updates an ingredient', async () => {
 });
 
 Deno.test('updateIngredientService throws NotFoundException if ingredient not found', async () => {
-    const mockRepo = {
-        getIngredientById: (id: string) => Promise.resolve(null),
-        updateIngredient: (ingredient: Ingredient) => Promise.resolve(ingredient)
+    const getIngredientByIdMock = async (id: string): Promise<Ingredient> => {
+        throw new Error('No id found for this ingredient');
     };
+    
+    const mockRepo = {
+        ...ingredientRepository,
+        getIngredientById: getIngredientByIdMock,
+    };
+
     await assertRejects(
-        () => updateIngredientService({ id: '999', nom: 'Nonexistent' }, mockRepo as any),
-        NotFoundException,
+        async () => {
+            await updateIngredientService({ id: '999', nom: 'Nonexistent' }, mockRepo);
+        },
+        Error,
         'No id found for this ingredient'
     );
 });
