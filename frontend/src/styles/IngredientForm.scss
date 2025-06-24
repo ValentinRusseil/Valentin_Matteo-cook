@@ -1,0 +1,91 @@
+@use './_variables' as *;
+
+.ingredient-form {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: $spacing-lg;
+
+    .form-header {
+        margin-bottom: $spacing-lg * 2;
+
+        h1 {
+            font-size: $font-size-base * 1.75;
+            font-weight: 600;
+            color: $text-color;
+        }
+    }
+
+    .form-content {
+        background-color: $background-color;
+        border-radius: $border-radius-lg;
+        box-shadow: 0 2px 8px rgba($shadow-color, 0.08);
+        overflow: hidden;
+        padding: $spacing-lg;
+
+        .form-group {
+            margin-bottom: $spacing-lg;
+
+            input {
+                width: 50%;
+                padding: $spacing-md;
+                border: 1px solid #dee2e6;
+                border-radius: $border-radius;
+                font-size: $font-size-base;
+                color: $text-color;
+                background-color: white;
+                transition: $transition-base;
+
+                &:focus {
+                    outline: none;
+                    border-color: #3498db;
+                }
+            }
+        }
+
+        .error-message {
+            color: $error-color;
+            margin-bottom: $spacing-md;
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: $spacing-md;
+
+            button,
+            a {
+                padding: $spacing-sm $spacing-lg;
+                border-radius: $border-radius;
+                font-weight: 500;
+                transition: $transition-base;
+                border: none;
+                text-decoration: none;
+                display: inline-block;
+                text-align: center;
+
+                &.bouton-creer {
+                    background-color: #2ecc71;
+                    color: white;
+
+                    &:hover {
+                        background-color: #27ae60;
+                    }
+
+                    &:disabled {
+                        opacity: 0.7;
+                        cursor: not-allowed;
+                    }
+                }
+
+                &.bouton-annuler {
+                    background-color: #2c3e50;
+                    color: white;
+
+                    &:hover {
+                        background-color: #2c3e50;
+                    }
+                }
+            }
+        }
+    }
+}

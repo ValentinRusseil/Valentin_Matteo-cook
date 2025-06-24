@@ -1,0 +1,44 @@
+// Couleurs
+$primary-color: #3498db;
+$secondary-color: #2c3e50;
+$success-color: #2ecc71;
+$error-color: #e74c3c;
+
+// Couleurs spécifiques
+$border-color: #e0e0e0;
+$text-color: #34495e;
+$text-color-light: #bdc3c7;
+$background-color: #fff;
+$hover-color: #3498db;
+$input-border-color: #e0e0e0;
+$shadow-color: rgba(0, 0, 0, 0.1);
+
+// Typographie
+$font-family-base: "Arial", sans-serif;
+$font-size-base: 16px;
+$font-size-sm: 14px;
+$font-size-xs: 12px;
+$line-height-base: 1.5;
+
+// Espacement
+$spacing-unit: 8px;
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$border-radius: 8px;
+$border-radius-lg: 12px;
+$border-radius-full: 9999px;
+
+// Breakpoints
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+
+// Transitions
+$transition-base: all 0.3s ease;
+$transition-fast: 0.2s ease;
+
+// Z-index
+$z-index-navbar: 1000;

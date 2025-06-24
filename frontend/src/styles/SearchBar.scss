@@ -1,0 +1,67 @@
+@use "./_variables" as *;
+
+.search-bar {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+
+    &__input {
+        width: 100%;
+        padding: $spacing-md $spacing-lg $spacing-md ($spacing-lg + 24px);
+        border: 2px solid $border-color;
+        border-radius: $border-radius-full;
+        font-size: $font-size-sm;
+        transition: $transition-base;
+        color: $text-color;
+
+        &:focus {
+            outline: none;
+            border-color: $hover-color;
+            box-shadow: 0 0 0 3px rgba($hover-color, 0.1);
+        }
+
+        &::placeholder {
+            color: $text-color-light;
+        }
+    }
+
+    &__icon {
+        position: absolute;
+        left: $spacing-md;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 20px;
+        height: 20px;
+        color: $text-color-light;
+        pointer-events: none;
+    }
+}
+
+@media (max-width: $breakpoint-lg) {
+    .search-bar {
+        max-width: 300px;
+    }
+}
+
+@media (max-width: $breakpoint-md) {
+    .search-bar {
+        max-width: 100%;
+        margin: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .search-bar {
+        &__input {
+            font-size: $font-size-xs;
+            padding: $spacing-sm $spacing-md $spacing-sm ($spacing-md + 20px);
+        }
+
+        &__icon {
+            width: 16px;
+            height: 16px;
+            left: $spacing-xs;
+        }
+    }
+}

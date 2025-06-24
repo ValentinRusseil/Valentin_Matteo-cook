@@ -1,0 +1,443 @@
+[
+    {
+        "nom": "Quiche Lorraine",
+        "description": "La quiche lorraine classique avec une pâte brisée maison, des lardons et une garniture à base d'œufs et de crème.",
+        "instructions": "1. Préchauffer le four à 180°C.\n2. Étaler la pâte brisée dans un moule à tarte.\n3. Faire revenir les lardons à la poêle.\n4. Battre les œufs avec la crème fraîche, saler et poivrer.\n5. Répartir les lardons sur le fond de tarte.\n6. Verser le mélange œufs-crème.\n7. Enfourner pour 30-35 minutes.",
+        "categorie": "plat",
+        "tempsPreparation": 45,
+        "origine": "France",
+        "ingredients": [
+            {
+                "nom": "Farine"
+            },
+            {
+                "nom": "Beurre"
+            },
+            {
+                "nom": "Sel"
+            },
+            {
+                "nom": "Œufs"
+            },
+            {
+                "nom": "Crème fraîche"
+            },
+            {
+                "nom": "Porc"
+            },
+            {
+                "nom": "Poivre"
+            }
+        ]
+    },
+    {
+        "nom": "Ratatouille",
+        "description": "Un plat provençal coloré à base de légumes du soleil mijotés ensemble.",
+        "instructions": "1. Couper tous les légumes en dés.\n2. Dans une grande casserole, faire revenir les oignons et l'ail dans l'huile d'olive.\n3. Ajouter les aubergines et les poivrons, faire revenir 5 minutes.\n4. Ajouter les courgettes et les tomates.\n5. Assaisonner avec sel, poivre, thym et laurier.\n6. Laisser mijoter à couvert pendant 45 minutes en remuant de temps en temps.",
+        "categorie": "plat",
+        "tempsPreparation": 60,
+        "origine": "France",
+        "ingredients": [
+            {
+                "nom": "Tomates"
+            },
+            {
+                "nom": "Oignons"
+            },
+            {
+                "nom": "Ail"
+            },
+            {
+                "nom": "Courgettes"
+            },
+            {
+                "nom": "Aubergines"
+            },
+            {
+                "nom": "Poivrons"
+            },
+            {
+                "nom": "Huile d'olive"
+            },
+            {
+                "nom": "Sel"
+            },
+            {
+                "nom": "Poivre"
+            },
+            {
+                "nom": "Thym"
+            }
+        ]
+    },
+    {
+        "nom": "Tarte aux pommes",
+        "description": "Une tarte aux pommes traditionnelle avec une touche de cannelle.",
+        "instructions": "1. Préchauffer le four à 180°C.\n2. Étaler la pâte brisée dans un moule à tarte.\n3. Éplucher et couper les pommes en fines tranches.\n4. Disposer les tranches de pommes sur la pâte.\n5. Mélanger le sucre et la cannelle, saupoudrer sur les pommes.\n6. Enfourner pour 35-40 minutes jusqu'à ce que la tarte soit dorée.",
+        "categorie": "dessert",
+        "tempsPreparation": 50,
+        "origine": "France",
+        "ingredients": [
+            {
+                "nom": "Farine"
+            },
+            {
+                "nom": "Beurre"
+            },
+            {
+                "nom": "Sucre"
+            },
+            {
+                "nom": "Pommes"
+            },
+            {
+                "nom": "Cannelle"
+            }
+        ]
+    },
+    {
+        "nom": "Gratin Dauphinois",
+        "description": "Un savoureux gratin de pommes de terre à la crème et au gruyère.",
+        "instructions": "1. Préchauffer le four à 180°C.\n2. Beurrer un plat à gratin.\n3. Éplucher et couper les pommes de terre en fines rondelles.\n4. Frotter le plat avec une gousse d'ail.\n5. Disposer les pommes de terre en couches, en salant entre chaque couche.\n6. Verser le lait et la crème chauffés ensemble.\n7. Saupoudrer de fromage râpé.\n8. Enfourner pour 1h15 environ.",
+        "categorie": "plat",
+        "tempsPreparation": 90,
+        "origine": "France",
+        "ingredients": [
+            {
+                "nom": "Pommes de terre"
+            },
+            {
+                "nom": "Lait"
+            },
+            {
+                "nom": "Crème fraîche"
+            },
+            {
+                "nom": "Ail"
+            },
+            {
+                "nom": "Sel"
+            },
+            {
+                "nom": "Poivre"
+            },
+            {
+                "nom": "Emmental"
+            },
+            {
+                "nom": "Beurre"
+            }
+        ]
+    },
+    {
+        "nom": "Soupe à l'oignon",
+        "description": "Une soupe réconfortante à base d'oignons caramélisés, gratinée au fromage.",
+        "instructions": "1. Éplucher et émincer les oignons.\n2. Les faire revenir dans le beurre à feu doux pendant 30 minutes jusqu'à caramélisation.\n3. Saupoudrer de farine, mélanger.\n4. Mouiller avec le bouillon, porter à ébullition.\n5. Laisser mijoter 20 minutes.\n6. Verser dans des bols à soupe.\n7. Déposer une tranche de pain et du fromage râpé sur chaque bol.\n8. Passer sous le gril du four jusqu'à ce que le fromage soit doré.",
+        "categorie": "entrée",
+        "tempsPreparation": 60,
+        "origine": "France",
+        "ingredients": [
+            {
+                "nom": "Oignons"
+            },
+            {
+                "nom": "Beurre"
+            },
+            {
+                "nom": "Farine"
+            },
+            {
+                "nom": "Sel"
+            },
+            {
+                "nom": "Poivre"
+            },
+            {
+                "nom": "Comté"
+            }
+        ]
+    },
+    {
+        "nom": "Mousse au chocolat",
+        "description": "Un dessert aérien et chocolaté, un grand classique de la pâtisserie française.",
+        "instructions": "1. Casser le chocolat en morceaux et le faire fondre au bain-marie.\n2. Séparer les blancs des jaunes d'œufs.\n3. Mélanger les jaunes avec le chocolat fondu.\n4. Monter les blancs en neige ferme avec une pincée de sel.\n5. Incorporer délicatement les blancs au mélange chocolaté.\n6. Répartir dans des ramequins.\n7. Réfrigérer au moins 3 heures avant de servir.",
+        "categorie": "dessert",
+        "tempsPreparation": 30,
+        "origine": "France",
+        "ingredients": [
+            {
+                "nom": "Chocolat"
+            },
+            {
+                "nom": "Œufs"
+            },
+            {
+                "nom": "Sucre"
+            },
+            {
+                "nom": "Sel"
+            }
+        ]
+    },
+    {
+        "nom": "Salade Niçoise",
+        "description": "Une salade fraîche et complète originaire de la région de Nice.",
+        "instructions": "1. Laver et couper la salade.\n2. Cuire les pommes de terre et les haricots verts.\n3. Trancher les tomates.\n4. Couper les œufs durs en quartiers.\n5. Égoutter le thon.\n6. Disposer tous les ingrédients sur un lit de salade.\n7. Préparer une vinaigrette à base d'huile d'olive, vinaigre, sel et poivre.\n8. Arroser la salade de vinaigrette au moment de servir.",
+        "categorie": "entrée",
+        "tempsPreparation": 40,
+        "origine": "France",
+        "ingredients": [
+            {
+                "nom": "Tomates"
+            },
+            {
+                "nom": "Œufs"
+            },
+            {
+                "nom": "Pommes de terre"
+            },
+            {
+                "nom": "Thon"
+            },
+            {
+                "nom": "Huile d'olive"
+            },
+            {
+                "nom": "Sel"
+            },
+            {
+                "nom": "Poivre"
+            }
+        ]
+    },
+    {
+        "nom": "Bœuf Bourguignon",
+        "description": "Un plat mijoté à base de bœuf et de vin rouge, typique de la cuisine bourguignonne.",
+        "instructions": "1. Couper la viande en morceaux.\n2. Faire revenir les lardons dans une cocotte.\n3. Ajouter la viande et la faire dorer.\n4. Saupoudrer de farine, bien mélanger.\n5. Mouiller avec le vin rouge et le bouillon.\n6. Ajouter les oignons, les carottes et un bouquet garni.\n7. Laisser mijoter à couvert pendant 2h30.\n8. Faire sauter les champignons séparément et les ajouter en fin de cuisson.",
+        "categorie": "plat",
+        "tempsPreparation": 180,
+        "origine": "France",
+        "ingredients": [
+            {
+                "nom": "Bœuf"
+            },
+            {
+                "nom": "Porc"
+            },
+            {
+                "nom": "Farine"
+            },
+            {
+                "nom": "Oignons"
+            },
+            {
+                "nom": "Carottes"
+            },
+            {
+                "nom": "Champignons"
+            },
+            {
+                "nom": "Sel"
+            },
+            {
+                "nom": "Poivre"
+            }
+        ]
+    },
+    {
+        "nom": "Crêpes",
+        "description": "Des crêpes fines et délicieuses pour la Chandeleur ou toute occasion.",
+        "instructions": "1. Dans un saladier, mettre la farine et former un puits.\n2. Ajouter les œufs et commencer à mélanger.\n3. Incorporer progressivement le lait tout en mélangeant.\n4. Ajouter une pincée de sel et le sucre.\n5. Laisser reposer la pâte 1 heure minimum.\n6. Chauffer une poêle à crêpes, la beurrer légèrement.\n7. Verser une louche de pâte et cuire chaque crêpe environ 1 minute par face.",
+        "categorie": "dessert",
+        "tempsPreparation": 90,
+        "origine": "France",
+        "ingredients": [
+            {
+                "nom": "Farine"
+            },
+            {
+                "nom": "Œufs"
+            },
+            {
+                "nom": "Lait"
+            },
+            {
+                "nom": "Sucre"
+            },
+            {
+                "nom": "Sel"
+            },
+            {
+                "nom": "Beurre"
+            }
+        ]
+    },
+    {
+        "nom": "Risotto aux champignons",
+        "description": "Un risotto crémeux aux champignons parfumé au parmesan.",
+        "instructions": "1. Faire revenir les oignons dans l'huile d'olive jusqu'à ce qu'ils soient translucides.\n2. Ajouter le riz et le faire nacrer pendant 2 minutes.\n3. Verser un peu de bouillon chaud et remuer constamment.\n4. Dès que le liquide est absorbé, ajouter de nouveau du bouillon.\n5. Pendant ce temps, faire sauter les champignons.\n6. Après environ 18 minutes, quand le riz est cuit mais encore ferme, ajouter les champignons.\n7. Incorporer le parmesan et une noix de beurre.\n8. Laisser reposer 2 minutes avant de servir.",
+        "categorie": "plat",
+        "tempsPreparation": 40,
+        "origine": "Italie",
+        "ingredients": [
+            {
+                "nom": "Riz"
+            },
+            {
+                "nom": "Champignons"
+            },
+            {
+                "nom": "Oignons"
+            },
+            {
+                "nom": "Huile d'olive"
+            },
+            {
+                "nom": "Parmesan"
+            },
+            {
+                "nom": "Beurre"
+            },
+            {
+                "nom": "Sel"
+            },
+            {
+                "nom": "Poivre"
+            }
+        ]
+    },
+    {
+        "nom": "Taboulé",
+        "description": "Une salade fraîche à base de semoule, typique de la cuisine du Moyen-Orient.",
+        "instructions": "1. Rincer la semoule à l'eau froide, l'égoutter et la mettre dans un saladier.\n2. Ajouter le jus de citron et l'huile d'olive, mélanger.\n3. Laisser gonfler 30 minutes.\n4. Pendant ce temps, laver et hacher finement la menthe et le persil.\n5. Couper les tomates et le concombre en petits dés.\n6. Émincer finement les oignons verts.\n7. Mélanger tous les ingrédients avec la semoule.\n8. Rectifier l'assaisonnement et réfrigérer avant de servir.",
+        "categorie": "entrée",
+        "tempsPreparation": 45,
+        "origine": "Liban",
+        "ingredients": [
+            {
+                "nom": "Riz"
+            },
+            {
+                "nom": "Tomates"
+            },
+            {
+                "nom": "Oignons"
+            },
+            {
+                "nom": "Citrons"
+            },
+            {
+                "nom": "Huile d'olive"
+            },
+            {
+                "nom": "Persil"
+            },
+            {
+                "nom": "Sel"
+            },
+            {
+                "nom": "Poivre"
+            }
+        ]
+    },
+    {
+        "nom": "Tiramisu",
+        "description": "Un dessert italien crémeux à base de mascarpone et de café.",
+        "instructions": "1. Séparer les blancs des jaunes d'œufs.\n2. Battre les jaunes avec le sucre jusqu'à ce que le mélange blanchisse.\n3. Ajouter le mascarpone et mélanger jusqu'à obtenir une crème lisse.\n4. Monter les blancs en neige et les incorporer délicatement à la préparation.\n5. Tremper rapidement les biscuits dans le café.\n6. Disposer une couche de biscuits au fond d'un plat.\n7. Recouvrir d'une couche de crème.\n8. Répéter l'opération et terminer par une couche de crème.\n9. Saupoudrer de cacao.\n10. Réfrigérer au moins 4 heures avant de servir.",
+        "categorie": "dessert",
+        "tempsPreparation": 30,
+        "origine": "Italie",
+        "ingredients": [
+            {
+                "nom": "Œufs"
+            },
+            {
+                "nom": "Sucre"
+            },
+            {
+                "nom": "Chocolat"
+            }
+        ]
+    },
+    {
+        "nom": "Couscous",
+        "description": "Un plat traditionnel nord-africain à base de semoule et de légumes.",
+        "instructions": "1. Préparer le bouillon avec les épices, les légumes et la viande.\n2. Laisser mijoter 1h30.\n3. 20 minutes avant la fin, préparer la semoule en la travaillant avec de l'huile d'olive.\n4. Cuire la semoule à la vapeur en plusieurs fois.\n5. Servir la semoule avec les légumes, la viande et le bouillon à part.",
+        "categorie": "plat",
+        "tempsPreparation": 120,
+        "origine": "Maghreb",
+        "ingredients": [
+            {
+                "nom": "Riz"
+            },
+            {
+                "nom": "Poulet"
+            },
+            {
+                "nom": "Carottes"
+            },
+            {
+                "nom": "Oignons"
+            },
+            {
+                "nom": "Pommes de terre"
+            },
+            {
+                "nom": "Courgettes"
+            },
+            {
+                "nom": "Huile d'olive"
+            },
+            {
+                "nom": "Sel"
+            },
+            {
+                "nom": "Poivre"
+            }
+        ]
+    },
+    {
+        "nom": "Tarte Tatin",
+        "description": "Une tarte aux pommes caramélisées renversée, spécialité de la région de Sologne.",
+        "instructions": "1. Éplucher et couper les pommes en quartiers.\n2. Dans un moule à tarte tatin, faire fondre le beurre et le sucre jusqu'à obtenir un caramel.\n3. Disposer les pommes dans le caramel.\n4. Cuire à feu doux environ 15 minutes.\n5. Recouvrir avec la pâte feuilletée en rentrant bien les bords.\n6. Enfourner à 180°C pendant 25-30 minutes.\n7. Laisser tiédir puis renverser la tarte sur un plat de service.",
+        "categorie": "dessert",
+        "tempsPreparation": 60,
+        "origine": "France",
+        "ingredients": [
+            {
+                "nom": "Pommes"
+            },
+            {
+                "nom": "Sucre"
+            },
+            {
+                "nom": "Beurre"
+            },
+            {
+                "nom": "Farine"
+            }
+        ]
+    },
+    {
+        "nom": "Croque-Monsieur",
+        "description": "Un sandwich chaud gratiné au fromage, spécialité française.",
+        "instructions": "1. Beurrer les tranches de pain de mie.\n2. Sur la moitié des tranches, disposer une tranche de jambon et du fromage râpé.\n3. Refermer avec les autres tranches de pain.\n4. Dans un bol, mélanger la crème fraîche avec un peu de fromage râpé.\n5. Étaler ce mélange sur le dessus des croques.\n6. Faire gratiner sous le gril du four pendant 5-10 minutes.",
+        "categorie": "plat",
+        "tempsPreparation": 20,
+        "origine": "France",
+        "ingredients": [
+            {
+                "nom": "Beurre"
+            },
+            {
+                "nom": "Porc"
+            },
+            {
+                "nom": "Emmental"
+            },
+            {
+                "nom": "Crème fraîche"
+            }
+        ]
+    }
+]

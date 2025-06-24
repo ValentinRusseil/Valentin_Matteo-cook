@@ -1,0 +1,113 @@
+@use "./_variables" as *;
+@use "sass:color";
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: $background-color;
+    box-shadow: 0 2px 4px $shadow-color;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $spacing-md $spacing-lg;
+    z-index: $z-index-navbar;
+    height: 70px;
+
+    .nav-left {
+        flex: 0 0 auto;
+
+        .logo {
+            font-size: $font-size-base * 1.5;
+            font-weight: 700;
+            color: $primary-color;
+            text-decoration: none;
+            transition: $transition-fast;
+
+            &:hover {
+                color: color.adjust($primary-color, $lightness: -10%);
+            }
+        }
+    }
+
+    .nav-center {
+        flex: 1;
+        max-width: 600px;
+        margin: 0 $spacing-lg;
+    }
+
+    .nav-right {
+        flex: 0 0 auto;
+
+        ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: $spacing-lg;
+        }
+
+        li {
+            a {
+                text-decoration: none;
+                color: $text-color;
+                font-weight: 500;
+                padding: $spacing-sm $spacing-md;
+                border-radius: $border-radius;
+                transition: $transition-fast;
+
+                &:hover {
+                    color: $hover-color;
+                    background-color: rgba($hover-color, 0.05);
+                }
+            }
+
+            &.active a {
+                color: $hover-color;
+                font-weight: 600;
+                background-color: rgba($hover-color, 0.1);
+            }
+        }
+    }
+}
+
+@media (max-width: $breakpoint-md) {
+    .navbar {
+        height: auto;
+        padding: $spacing-sm;
+        flex-direction: column;
+        gap: $spacing-sm;
+
+        .nav-left,
+        .nav-center,
+        .nav-right {
+            width: 100%;
+            text-align: center;
+        }
+
+        .nav-right {
+            ul {
+                justify-content: center;
+                gap: $spacing-sm;
+                flex-wrap: wrap;
+            }
+
+            li a {
+                display: block;
+                text-align: center;
+                padding: $spacing-xs $spacing-sm;
+            }
+        }
+    }
+}
+
+:global(body) {
+    padding-top: 70px;
+}
+
+@media (max-width: $breakpoint-md) {
+    :global(body) {
+        padding-top: 150px;
+    }
+}

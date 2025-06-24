@@ -1,0 +1,301 @@
+@use './_variables' as *;
+@use 'sass:color';
+
+// Mixins
+@mixin floating-label {
+    position: absolute;
+    left: $spacing-md;
+    background: linear-gradient(180deg, transparent 50%, $background-color 50%);
+    padding: 0 $spacing-xs;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+}
+
+@mixin input-focus {
+    outline: none;
+    border-color: $primary-color;
+    box-shadow: 0 4px 20px rgba($primary-color, 0.15);
+}
+
+// Form styles
+.form-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 1rem auto;
+    padding: $spacing-lg;
+    background: linear-gradient(145deg, #ffffff, #f5f5f5);
+    border-radius: $border-radius-lg;
+    box-shadow:
+        0 10px 40px rgba($shadow-color, 0.1),
+        inset 0 -2px 6px rgba(255, 255, 255, 0.7),
+        inset 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    box-sizing: border-box;
+    overflow: hidden;
+
+    &:hover {
+        transform: translateY(-2px);
+    }
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: $spacing-lg;
+    width: 100%;
+    box-sizing: border-box;
+
+    label {
+        @include floating-label;
+        top: -$spacing-xs;
+        font-size: $font-size-sm;
+        color: $text-color-light;
+        transform-origin: left;
+        z-index: 1;
+        font-weight: 500;
+        white-space: nowrap;
+        max-width: calc(100% - 2 * $spacing-md);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transform: translateY($spacing-lg) translateX($spacing-xs);
+        transition: all 0.3s ease;
+    }
+
+    input,
+    textarea,
+    select {
+        width: 100%;
+        padding: $spacing-md;
+        background: rgba(255, 255, 255, 0.9);
+        border: 2px solid $border-color;
+        border-radius: $border-radius;
+        font-size: $font-size-base;
+        color: $text-color;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        backdrop-filter: blur(4px);
+        box-sizing: border-box;
+
+        &:hover {
+            border-color: color.adjust($primary-color, $lightness: 20%);
+        }
+
+        &:focus {
+            @include input-focus;
+            background: rgba(255, 255, 255, 1);
+
+            & + label {
+                color: $primary-color;
+                transform: translateY(-50%) scale(0.85);
+                font-weight: 600;
+            }
+        }
+
+        &::placeholder {
+            color: transparent;
+            font-style: italic;
+            font-size: $font-size-base;
+            transition: color 0.3s ease;
+        }
+
+        &:focus::placeholder {
+            color: rgba($text-color-light, 0.6);
+        }
+
+        &:not(:placeholder-shown) + label,
+        &:focus + label {
+            transform: translateY(-50%) scale(0.85);
+        }
+    }
+
+    select {
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+        background-position: right 0.5rem center;
+        background-repeat: no-repeat;
+        background-size: 1.5em 1.5em;
+        padding-right: 2.5rem;
+
+        &:not([value='']) + label {
+            transform: translateY(-50%) scale(0.85);
+        }
+
+        option[value=''][disabled] {
+            display: none;
+        }
+    }
+
+    textarea {
+        min-height: 120px;
+        max-height: 300px;
+        resize: vertical;
+        line-height: 1.6;
+    }
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: $spacing-md;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+// Actions container
+.actions {
+    margin-top: $spacing-lg;
+    display: flex;
+    justify-content: flex-end;
+    gap: $spacing-md;
+    width: 100%;
+    box-sizing: border-box;
+
+    button {
+        min-width: 100px;
+        max-width: 200px;
+        padding: $spacing-sm $spacing-md;
+        border: none;
+        border-radius: $border-radius;
+        font-size: $font-size-base;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+
+        &[type='submit'] {
+            background: linear-gradient(135deg, $primary-color, color.adjust($primary-color, $lightness: 10%));
+            color: $background-color;
+
+            &:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+                transition: 0.5s;
+            }
+
+            &:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 20px rgba($primary-color, 0.3);
+
+                &:before {
+                    left: 100%;
+                }
+            }
+
+            &:active {
+                transform: translateY(0);
+            }
+        }
+
+        &[type='button'] {
+            background-color: transparent;
+            color: $text-color;
+            border: 2px solid $border-color;
+            position: relative;
+            z-index: 1;
+
+            &:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 0;
+                height: 100%;
+                background: rgba($primary-color, 0.1);
+                transition: 0.3s;
+                z-index: -1;
+            }
+
+            &:hover {
+                border-color: $primary-color;
+                color: $primary-color;
+
+                &:before {
+                    width: 100%;
+                }
+            }
+        }
+
+        &:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+    }
+}
+
+// Responsive adjustments
+@media (max-width: $breakpoint-md) {
+    .form-container {
+        margin: $spacing-sm;
+        padding: $spacing-md;
+        max-width: calc(100% - 2 * $spacing-sm);
+    }
+
+    .form-group {
+        margin-bottom: $spacing-md;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: $spacing-sm;
+    }
+
+    .actions {
+        flex-direction: column;
+        gap: $spacing-sm;
+
+        button {
+            width: 100%;
+            max-width: 100%;
+        }
+    }
+}
+
+// Animations
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY($spacing-md);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+.form-group {
+    animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: calc(var(--animation-order, 0) * 0.1s);
+}
+
+.instructions-container {
+    width: 100%;
+    position: relative;
+    margin-top: $spacing-lg;
+
+    .instructions-hint {
+        font-size: $font-size-sm;
+        color: $text-color-light;
+        margin-bottom: $spacing-xs;
+        font-style: italic;
+    }
+
+    textarea {
+        margin-top: $spacing-xs;
+    }
+}

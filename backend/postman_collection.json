@@ -1,0 +1,305 @@
+{
+    "info": {
+        "_postman_id": "YOUR_COLLECTION_ID",
+        "name": "API Recettes & Ingrédients",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Ingrédients",
+            "item": [
+                {
+                    "name": "Récupérer tous les ingrédients",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:8000/ingredients",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "8000",
+                            "path": ["ingredients"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Récupérer un ingrédient par ID",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:8000/ingredients/{{ingredientId}}",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "8000",
+                            "path": ["ingredients", "{{ingredientId}}"],
+                            "variable": [
+                                {
+                                    "key": "ingredientId",
+                                    "value": "1",
+                                    "description": "ID de l'ingrédient à récupérer"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Récupérer un ingrédient par nom",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:8000/ingredients?nom={{nom}}",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "8000",
+                            "path": ["ingredients"],
+                            "query": [
+                                {
+                                    "key": "nom",
+                                    "value": "{{nom}}"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Créer un nouvel ingrédient",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"nom\": \"Nouveau Ingrédient\"\n}"
+                        },
+                        "url": {
+                            "raw": "http://localhost:8000/ingredients",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "8000",
+                            "path": ["ingredients"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Mettre à jour un ingrédient",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"nom\": \"Nouveau Ingrédient\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "http://localhost:8000/ingredients/{{ingredientId}}",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "8000",
+                            "path": ["ingredients", "{{ingredientId}}"],
+                            "variable": [
+                                {
+                                    "key": "ingredientId",
+                                    "value": "1",
+                                    "description": "ID de l'ingrédient à supprimer"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Supprimer un ingrédient",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "http://localhost:8000/ingredients/{{ingredientId}}",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "8000",
+                            "path": ["ingredients", "{{ingredientId}}"],
+                            "variable": [
+                                {
+                                    "key": "ingredientId",
+                                    "value": "1",
+                                    "description": "ID de l'ingrédient à supprimer"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Recettes",
+            "item": [
+                {
+                    "name": "Récupérer toutes les recettes",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:8000/recettes",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "8000",
+                            "path": ["recettes"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Récupérer une recette par ID",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:8000/recettes/{{recetteId}}",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "8000",
+                            "path": ["recettes", "{{recetteId}}"],
+                            "variable": [
+                                {
+                                    "key": "recetteId",
+                                    "value": "1",
+                                    "description": "ID de la recette à récupérer"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Récupérer une recette par son nom",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:8000/recettes?nom={{nom}}",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "8000",
+                            "path": ["recettes"],
+                            "query": [
+                                {
+                                    "key": "nom",
+                                    "value": "{{nom}}"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Récupérer une recette par sa categorie",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:8000/recettes?categorie={{categorie}}",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "8000",
+                            "path": ["recettes"],
+                            "query": [
+                                {
+                                    "key": "categorie",
+                                    "value": "{{categorie}}"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Créer une nouvelle recette",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"nom\": \"Nouvelle Recette\",\n    \"description\": \"Description de la recette\",\n    \"instructions\": \"Instructions de préparation\",\n    \"categorie\": \"plat\",\n    \"tempsPreparation\": 30,\n    \"origine\": \"France\",\n    \"ingredients\": [{ \"nom\": \"Sel\" }]\n}"
+                        },
+                        "url": {
+                            "raw": "http://localhost:8000/recettes",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "8000",
+                            "path": ["recettes"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Mettre à jour une recette",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"nom\": \"Recette mise à jour\",\n    \"description\": \"Nouvelle description\",\n    \"instructions\": \"Nouvelles instructions\",\n    \"categorie\": \"plat\",\n    \"tempsPreparation\": 40,\n    \"origine\": \"Italie\",\n    \"ingredients\": [{ \"nom\": \"Poivre\" }]\n}"
+                        },
+                        "url": {
+                            "raw": "http://localhost:8000/recettes/{{recetteId}}",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "8000",
+                            "path": ["recettes", "{{recetteId}}"],
+                            "variable": [
+                                {
+                                    "key": "recetteId",
+                                    "value": "1",
+                                    "description": "ID de la recette à mettre à jour"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Supprimer une recette",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "http://localhost:8000/recettes/{{recetteId}}",
+                            "protocol": "http",
+                            "host": ["localhost"],
+                            "port": "8000",
+                            "path": ["recettes", "{{recetteId}}"],
+                            "variable": [
+                                {
+                                    "key": "recetteId",
+                                    "value": "1",
+                                    "description": "ID de la recette à supprimer"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ]
+}
