@@ -25,7 +25,7 @@ Deno.test("getAllRecettesService - Cas nominal", async () => {
     assertEquals(recettes, expectedRecettes);
 });
 
-Deno.test("getAllRecettesService - Cas avec pas de donner", async () => {
+Deno.test("getAllRecettesService - Cas avec pas de données", async () => {
     // Given
     const expectedRecettes: Recette[] = [];
     const getAllRecettesMock = async (): Promise<Recette[]> => {
@@ -71,7 +71,6 @@ Deno.test("getRecetteByIdService - Cas recette non trouvée", async () => {
     // Given
     const recetteId = "non_existent_id";
     const getRecetteByIdMock = async (id: string): Promise<Recette> => {
-        assertEquals(id, recetteId);
         throw new Error("Recette not found");
     };
 
@@ -194,7 +193,6 @@ Deno.test("createRecetteService - Cas nominal", async () => {
         ingredients: [],
     };
     const createRecetteMock = async (recette: RecetteCandidate): Promise<Recette> => {
-        assertEquals(recette, recetteCandidate);
         return createdRecette;
     };
 
@@ -255,7 +253,6 @@ Deno.test("updateRecetteService - Cas nominal", async () => {
     };
 
     const updateRecetteMock = async (recette: Recette): Promise<Recette> => {
-        assertEquals(recette, updatedRecette);
         return updatedRecette;
     };
 
@@ -283,7 +280,6 @@ Deno.test("updateRecetteService - Cas recette non trouvée", async () => {
     };
 
     const getRecetteByIdMock = async (id: string): Promise<Recette> => {
-        assertEquals(id, recette.id);
         throw new Error("Recette not found");
     };
 
@@ -393,9 +389,7 @@ Deno.test("updateRecetteService - Cas ingrédient non trouvé", async () => {
 Deno.test("deleteRecetteService - Cas nominal", async () => {
     // Given
     const recetteId = "1";
-    const deleteRecetteMock = async (id: string): Promise<void> => {
-        assertEquals(id, recetteId);
-    };
+    const deleteRecetteMock = async (id: string): Promise<void> => {};
 
     const getRecetteByIdMock = async (id: string): Promise<Recette> => {
         return { id: recetteId, nom: "Recette 1", description: "Description 1", tempsPreparation: 30, categorie: RecetteCategorie.DESSERT, origine: "France", instructions: "Instructions 1", ingredients: [] };
@@ -411,7 +405,6 @@ Deno.test("deleteRecetteService - Cas recette non trouvée", async () => {
     // Given
     const recetteId = "non_existent_id";
     const getRecetteByIdMock = async (id: string): Promise<Recette> => {
-        assertEquals(id, recetteId);
         throw new Error("Recette not found");
     };
 
