@@ -4,7 +4,7 @@ import * as recetteRepository from "../repositories/recette.repository.ts";
 import * as ingredientRepository from "../repositories/ingredient.repository.ts";
 import { createRecetteService, getRecetteByIdService, getAllRecettesService, getRecetteByNomService, getRecetteByCategorieService, updateRecetteService, deleteRecetteService } from "./recette.service.ts";
 import { Recette, RecetteCandidate, RecetteCategorie } from "./models/recette.model.ts";
-import { IngredientCandidate } from "./models/ingredient.model.ts";
+import { Ingredient, IngredientCandidate } from "./models/ingredient.model.ts";
 
 Deno.test("getAllRecettesService - Cas nominal", async () => {
     // Given
@@ -299,6 +299,64 @@ Deno.test("updateRecetteService - Cas recette non trouvée", async () => {
     );
 });
 
+Deno.test("updateRecetteService - Cas recette id non trouvé", async () => {
+    // Given
+    const recette: Recette = {
+        id: "non_existent_id",
+        nom: "Updated Recette",
+        description: "Updated Description",
+        tempsPreparation: 45,
+        categorie: RecetteCategorie.PLAT,
+        origine: "Italie",
+        instructions: "Updated Instructions",
+        ingredients: [],
+    };
+    const getRecetteByIdMock = async (id: string): Promise<Recette> => {
+        return undefined as unknown as Recette; // Simule l'absence de la recette
+    };
+    const mockRepository = { ...recetteRepository, getRecetteById: getRecetteByIdMock };
+
+    // When & Then
+    await assertRejects(
+        async () => {
+            await updateRecetteService(recette, mockRepository);
+        },
+        Error,
+        "Recette not found",
+    );
+});
+
+Deno.test("updateRecetteService - Cas ingredient inexistant (BadRequestException)", async () => {
+    // Given
+    const recette: Recette = {
+        id: "1",
+        nom: "Recette test",
+        description: "desc",
+        tempsPreparation: 10,
+        categorie: RecetteCategorie.PLAT,
+        origine: "France",
+        instructions: "inst",
+        ingredients: [{ id: "not_found", nom: "Ingrédient inconnu" }],
+    };
+
+    const getRecetteByIdMock = async (_id: string): Promise<Recette> => recette;
+    const updateRecetteMock = async (r: Recette): Promise<Recette> => r;
+    // Ici, on simule l'absence de l'ingrédient
+    const getIngredientByIdMock = async (_id: string): Promise<Ingredient> => {return undefined as unknown as Ingredient;};
+
+    const mockRepository = { ...recetteRepository, updateRecette: updateRecetteMock, getRecetteById: getRecetteByIdMock };
+    const mockIngredientRepository = { ...ingredientRepository, getIngredientById: getIngredientByIdMock };
+
+    // When & Then
+    await assertRejects(
+        async () => {
+            await updateRecetteService(recette, mockRepository, mockIngredientRepository);
+        },
+        Error,
+        "Ingredient with id not_found does not exist",
+    );
+});
+
 Deno.test("updateRecetteService - Cas ingrédient non trouvé", async () => {
     // Given
     const recette: Recette = {
@@ -355,6 +413,25 @@ Deno.test("deleteRecetteService - Cas recette non trouvée", async () => {
     const getRecetteByIdMock = async (id: string): Promise<Recette> => {
         assertEquals(id, recetteId);
         throw new Error("Recette not found");
+    };
+
+    const mockRepository = { ...recetteRepository, getRecetteById: getRecetteByIdMock };
+
+    // When & Then
+    await assertRejects(
+        async () => {
+            await deleteRecetteService(recetteId, mockRepository);
+        },
+        Error,
+        "Recette not found",
+    );
+});
+
+Deno.test("deleteRecetteService - Cas recette id non trouvé", async () => {
+    // Given
+    const recetteId = "non_existent_id";
+    const getRecetteByIdMock = async (id: string): Promise<Recette> => {
+        return undefined as unknown as Recette; // Simule l'absence de la recette
     };
 
     const mockRepository = { ...recetteRepository, getRecetteById: getRecetteByIdMock };
