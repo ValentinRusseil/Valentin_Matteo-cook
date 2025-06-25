@@ -33,12 +33,12 @@ npm install
 2. Lancer les tests
 
 ```bash
-npm run test
+npx vitest
 ```
-ou
+ou lance le coverage des tests
 
 ```bash
-npx vitest
+npx vitest run --coverage
 ```
 
 3. Configurer les variables d'environnement

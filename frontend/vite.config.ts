@@ -164,6 +164,17 @@ export default defineConfig({
     test: {
         environment: 'jsdom',
         globals: true,
-        setupFiles: []
+        setupFiles: [],
+        coverage: {
+            reporter: ['text', 'html', 'lcov'],
+            reportsDirectory: './coverage',
+            include: ['src/**/*.{js,ts,svelte}'],
+            exclude: [
+                'src/**/*.test.{js,ts}',
+                'src/**/*.spec.{js,ts}',
+                'src/app.html',
+                'src/lib/index.ts'
+            ]
+        }
     },
 });
