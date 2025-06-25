@@ -200,6 +200,28 @@ describe('Ingredient Service Tests', () => {
                 'No id found for this ingredient'
             );
         });
+
+        it("should throw NotFoundException if ingredient is undefined", async () => {
+            // Given
+            const ingredient: Ingredient = {
+                id: "non_existent_id",
+                nom: "Updated Ingredient",
+            };
+            const getIngredientByIdMock = async (id: string): Promise<Ingredient> => {
+                return undefined as unknown as Ingredient; // Simule l'absence de l'ingrédient
+            };
+            const mockRepository = { ...ingredientRepository, getIngredientById: getIngredientByIdMock };
+
+
+            // When & Then
+            await assertRejects(
+                async () => {
+                    await updateIngredientService(ingredient, mockRepository);
+                },
+                Error,
+                "No id found for this ingredient",
+            );
+        });
     });
 
     describe('deleteIngredientService', () => { 
@@ -234,6 +256,26 @@ describe('Ingredient Service Tests', () => {
                 'No id found for this ingredient'
             );
         });
-    });
 
+        it ('should throw NotFoundException if ingredient id not found', async () => {
+            // Given
+            const ingredientId = 'non_existent_id';
+            const mockRepo = {
+                ...ingredientRepository,
+                getIngredientById: (id: string): Promise<Ingredient> => {
+                    return undefined as unknown as Promise<Ingredient>;
+                }
+            };
+
+
+            // When & Then
+            await assertRejects(
+                async () => {
+                    await deleteIngredientService(ingredientId, mockRepo);
+                },
+                Error,
+                "No id found for this ingredient",
+            );
+        });
+    });
 });
