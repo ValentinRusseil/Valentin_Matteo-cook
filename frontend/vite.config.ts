@@ -161,4 +161,9 @@ export default defineConfig({
     ssr: {
         noExternal: ['@sveltejs/kit'],
     },
+    test: {
+        environment: 'jsdom',
+        globals: true,
+        setupFiles: []
+    },
 });
