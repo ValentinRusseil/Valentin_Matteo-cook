@@ -25,11 +25,17 @@ et modifier leurs recettes préférées.
 
 ### Installation Complète
 
-1. Cloner le repository
+1. Lancer les tests dans le backend
 
 ```bash
-git clone https://github.com/matteotremblay/projet-1-cookcookcook-matteo-valentin-enzo.git
-cd projet-1-cookcookcook-matteo-valentin-enzo
+cd backend
+deno test --allow-all
+```
+
+Lancer les tests avec le coverage
+```bash
+cd backend
+deno test --allow-all --coverage=coverage
 ```
 
 2. Installer et démarrer le backend
