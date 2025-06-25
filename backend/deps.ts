@@ -18,3 +18,4 @@ export { oakCors } from 'https://deno.land/x/cors@v1.2.2/mod.ts';
 export { config } from 'https://deno.land/x/dotenv@v3.2.2/mod.ts';
 
 export { assert, assertEquals, assertRejects, assertThrows } from "https://deno.land/std@0.200.0/testing/asserts.ts";
+export { spy, stub, assertSpyCalls, assertSpyCall, assertSpyCallArgs } from "https://deno.land/std@0.200.0/testing/mock.ts";

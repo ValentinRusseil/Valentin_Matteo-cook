@@ -1,4 +1,4 @@
-import { assertEquals, assertRejects } from "../deps.ts";
+import { assertEquals, assertRejects, spy, assertSpyCalls, assertSpyCall } from "../deps.ts";
 
 import * as recetteRepository from "../repositories/recette.repository.ts";
 import * as ingredientRepository from "../repositories/ingredient.repository.ts";
@@ -18,8 +18,10 @@ Deno.test("getAllRecettesService - Cas nominal", async () => {
 
     const mockRepository = { ...recetteRepository, getAllRecettes: getAllRecettesMock };
 
+
     // When
     const recettes = await getAllRecettesService(mockRepository);
+
 
     // Then
     assertEquals(recettes, expectedRecettes);
@@ -34,8 +36,10 @@ Deno.test("getAllRecettesService - Cas avec pas de données", async () => {
 
     const mockRepository = { ...recetteRepository, getAllRecettes: getAllRecettesMock };
 
+
     // When
     const recettes = await getAllRecettesService(mockRepository);
+
 
     // Then
     assertEquals(recettes, expectedRecettes);
@@ -60,8 +64,10 @@ Deno.test("getRecetteByIdService - Cas nominal", async () => {
 
     const mockRepository = { ...recetteRepository, getRecetteById: getRecetteByIdMock };
 
+
     // When
     const recette = await getRecetteByIdService(recetteId, mockRepository);
+
 
     // Then
     assertEquals(recette, expectedRecette);
@@ -74,6 +80,7 @@ Deno.test("getRecetteByIdService - Cas recette non trouvée", async () => {
         throw new Error("Recette not found");
     };
 
+    // When & Then
     const mockRepository = { ...recetteRepository, getRecetteById: getRecetteByIdMock };
 
     await assertRejects(
@@ -106,8 +113,10 @@ Deno.test("getRecetteByNomService - Cas nominal", async () => {
 
     const mockRepository = { ...recetteRepository, getRecetteByNom: getRecetteByNomMock };
 
+
     // When
     const recettes = await getRecetteByNomService(recetteNom, mockRepository);
+
 
     // Then
     assertEquals(recettes, expectedRecettes);
@@ -123,8 +132,10 @@ Deno.test("getRecetteByNomService - Cas avec pas de recette", async () => {
 
     const mockRepository = { ...recetteRepository, getRecetteByNom: getRecetteByNomMock };
 
+
     // When
     const recettes = await getRecetteByNomService(recetteNom, mockRepository);
+
 
     // Then
     assertEquals(recettes, expectedRecettes);
@@ -151,8 +162,10 @@ Deno.test("getRecetteByCategorieService - Cas nominal", async () => {
 
     const mockRepository = { ...recetteRepository, getRecetteByCategorie: getRecetteByCategorieMock };
 
+
     // When
     const recettes = await getRecetteByCategorieService(categorie, mockRepository);
+
 
     // Then
     assertEquals(recettes, expectedRecettes);
@@ -162,6 +175,8 @@ Deno.test("getRecetteByCategorieService - Cas catégorie invalide", async () => 
     // Given
     const categorie = "invalid_categorie";
     const mockRepository = { ...recetteRepository };
+
+    // When & Then
     await assertRejects(
         async () => {
             await getRecetteByCategorieService(categorie, mockRepository);
@@ -202,8 +217,13 @@ Deno.test("createRecetteService - Cas nominal", async () => {
 
     const mockRepository = { ...recetteRepository, createRecette: createRecetteMock, getRecetteById: getRecetteByIdMock };
 
+
     // When
-    await createRecetteService(recetteCandidate, mockRepository);
+    const result = await createRecetteService(recetteCandidate, mockRepository);
+
+
+    // Then
+    assertEquals(result, createdRecette);
 });
 
 Deno.test("createRecetteService - Cas recette candidate invalide", async () => {
@@ -223,6 +243,7 @@ Deno.test("createRecetteService - Cas recette candidate invalide", async () => {
     };
 
     const mockRepository = { ...recetteRepository, createRecette: createRecetteMock };
+
 
     // When & Then
     await assertRejects(
@@ -247,6 +268,12 @@ Deno.test("updateRecetteService - Cas nominal", async () => {
         ingredients: [],
     };
 
+    const getRecetteByIdSpy = spy(() => Promise.resolve(recette));
+    const updateRecetteSpy = spy(() => Promise.resolve(recette));
+    const getIngredientByIdSpy = spy((id: string) => 
+        Promise.resolve({ id, nom: `Ingredient ${id}` } as Ingredient)
+    );
+
     const updatedRecette: Recette = {
         ...recette,
         ingredients: [],
@@ -262,8 +289,13 @@ Deno.test("updateRecetteService - Cas nominal", async () => {
 
     const mockRepository = { ...recetteRepository, updateRecette: updateRecetteMock, getRecetteById: getRecetteByIdMock };
 
+
     // When
-    await updateRecetteService(recette, mockRepository);
+    const result = await updateRecetteService(recette, mockRepository);
+
+
+    // Then
+    assertEquals(result, updatedRecette);
 });
 
 Deno.test("updateRecetteService - Cas recette non trouvée", async () => {
@@ -284,6 +316,7 @@ Deno.test("updateRecetteService - Cas recette non trouvée", async () => {
     };
 
     const mockRepository = { ...recetteRepository, getRecetteById: getRecetteByIdMock };
+
 
     // When & Then
     await assertRejects(
@@ -311,6 +344,7 @@ Deno.test("updateRecetteService - Cas recette id non trouvé", async () => {
         return undefined as unknown as Recette; // Simule l'absence de la recette
     };
     const mockRepository = { ...recetteRepository, getRecetteById: getRecetteByIdMock };
+
 
     // When & Then
     await assertRejects(
@@ -342,6 +376,7 @@ Deno.test("updateRecetteService - Cas ingredient inexistant (BadRequestException
 
     const mockRepository = { ...recetteRepository, updateRecette: updateRecetteMock, getRecetteById: getRecetteByIdMock };
     const mockIngredientRepository = { ...ingredientRepository, getIngredientById: getIngredientByIdMock };
+
 
     // When & Then
     await assertRejects(
@@ -376,6 +411,7 @@ Deno.test("updateRecetteService - Cas ingrédient non trouvé", async () => {
     const mockRepository = { ...recetteRepository, getRecetteById: getRecetteByIdMock };
     const mockIngredientRepository = { ...ingredientRepository, getIngredientById: getIngredientByIdMock };
 
+
     // When & Then
     await assertRejects(
         async () => {
@@ -397,8 +433,13 @@ Deno.test("deleteRecetteService - Cas nominal", async () => {
 
     const mockRepository = { ...recetteRepository, deleteRecette: deleteRecetteMock, getRecetteById: getRecetteByIdMock };
 
+
     // When
-    await deleteRecetteService(recetteId, mockRepository);
+    const result = await deleteRecetteService(recetteId, mockRepository);
+
+
+    // Then
+    assertEquals(result, undefined);
 });
 
 Deno.test("deleteRecetteService - Cas recette non trouvée", async () => {
@@ -409,6 +450,7 @@ Deno.test("deleteRecetteService - Cas recette non trouvée", async () => {
     };
 
     const mockRepository = { ...recetteRepository, getRecetteById: getRecetteByIdMock };
+
 
     // When & Then
     await assertRejects(
@@ -429,6 +471,7 @@ Deno.test("deleteRecetteService - Cas recette id non trouvé", async () => {
 
     const mockRepository = { ...recetteRepository, getRecetteById: getRecetteByIdMock };
 
+
     // When & Then
     await assertRejects(
         async () => {
@@ -437,4 +480,113 @@ Deno.test("deleteRecetteService - Cas recette id non trouvé", async () => {
         Error,
         "Recette not found",
     );
+});
+
+// Tests avec vérifications spy (verify/times/never équivalents)
+
+Deno.test("deleteRecetteService - Vérifie que deleteRecette est appelé exactement une fois", async () => {
+    // Given
+    const recetteId = "1";
+    const existingRecette: Recette = {
+        id: recetteId,
+        nom: "Recette à supprimer",
+        description: "Description",
+        tempsPreparation: 30,
+        categorie: RecetteCategorie.DESSERT,
+        origine: "France",
+        instructions: "Instructions",
+        ingredients: []
+    };
+
+    const getRecetteByIdSpy = spy(() => Promise.resolve(existingRecette));
+    const deleteRecetteSpy = spy(() => Promise.resolve());
+
+    const mockRepository = {
+        ...recetteRepository,
+        getRecetteById: getRecetteByIdSpy,
+        deleteRecette: deleteRecetteSpy
+    };
+
+    // When
+    await deleteRecetteService(recetteId, mockRepository);
+
+    // Then - Équivalent de verify(...).times(1)
+    assertSpyCalls(getRecetteByIdSpy, 1);
+    assertSpyCalls(deleteRecetteSpy, 1);
+    
+    // Vérifier les arguments passés
+    assertSpyCall(getRecetteByIdSpy, 0, { args: [recetteId] });
+    assertSpyCall(deleteRecetteSpy, 0, { args: [recetteId] });
+});
+
+Deno.test("deleteRecetteService - Vérifie que deleteRecette n'est JAMAIS appelé si recette non trouvée", async () => {
+    // Given
+    const recetteId = "non_existent_id";
+    const getRecetteByIdSpy = spy(() => {
+        throw new Error("Recette not found");
+    });
+    const deleteRecetteSpy = spy(() => Promise.resolve());
+
+    const mockRepository = {
+        ...recetteRepository,
+        getRecetteById: getRecetteByIdSpy,
+        deleteRecette: deleteRecetteSpy
+    };
+
+    // When & Then
+    await assertRejects(async () => {
+        await deleteRecetteService(recetteId, mockRepository);
+    }, Error, "Recette not found");
+
+    // Vérifier que getRecetteById a été appelé
+    assertSpyCalls(getRecetteByIdSpy, 1);
+    
+    // Équivalent de verify(...).never() - deleteRecette ne doit JAMAIS être appelé
+    assertSpyCalls(deleteRecetteSpy, 0);
+});
+
+Deno.test("updateRecetteService - Vérifie les appels multiples aux dépendances", async () => {
+    // Given
+    const recette: Recette = {
+        id: "1",
+        nom: "Updated Recette",
+        description: "Updated Description",
+        tempsPreparation: 45,
+        categorie: RecetteCategorie.PLAT,
+        origine: "Italie",
+        instructions: "Updated Instructions",
+        ingredients: [
+            { id: "ing1", nom: "Ingredient 1" },
+            { id: "ing2", nom: "Ingredient 2" }
+        ]
+    };
+
+    const getRecetteByIdSpy = spy(() => Promise.resolve(recette));
+    const updateRecetteSpy = spy(() => Promise.resolve(recette));
+    const getIngredientByIdSpy = spy((id: string) => 
+        Promise.resolve({ id, nom: `Ingredient ${id}` } as Ingredient)
+    );
+
+    const mockRepository = {
+        ...recetteRepository,
+        getRecetteById: getRecetteByIdSpy,
+        updateRecette: updateRecetteSpy
+    };
+
+    const mockIngredientRepository = {
+        ...ingredientRepository,
+        getIngredientById: getIngredientByIdSpy
+    };
+
+    // When
+    await updateRecetteService(recette, mockRepository, mockIngredientRepository);
+
+    // Then - Vérifications multiples
+    assertSpyCalls(getRecetteByIdSpy, 1); // Appelé 1 fois
+    assertSpyCalls(updateRecetteSpy, 1);  // Appelé 1 fois
+    assertSpyCalls(getIngredientByIdSpy, 2); // Appelé 2 fois (pour chaque ingrédient)
+    
+    // Vérifier les arguments spécifiques
+    assertSpyCall(getIngredientByIdSpy, 0, { args: ["ing1"] });
+    assertSpyCall(getIngredientByIdSpy, 1, { args: ["ing2"] });
 });
