@@ -39,3 +39,6 @@ coverage/
 .cache/
 .temp/
 .tmp/
+
+#Deno
+deno.lock

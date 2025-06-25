@@ -20,12 +20,32 @@ Deno.test('getAllIngredientsService returns all ingredients', async () => {
     assertEquals(result, [fakeIngredient]);
 });
 
+Deno.test('getAllIngredientsService returns empty array if no ingredients', async () => {
+    const mockRepo = { getAllIngredients: () => Promise.resolve([]) };
+    const result = await getAllIngredientsService(mockRepo as any);
+    assertEquals(result, []);
+});
+
 Deno.test('getIngredientByIdService returns ingredient by id', async () => {
     const mockRepo = {
         getIngredientById: (id: string) => Promise.resolve(id === '1' ? fakeIngredient : null)
     };
     const result = await getIngredientByIdService('1', mockRepo as any);
     assertEquals(result, fakeIngredient);
+});
+
+Deno.test('getIngredientByIdService throws NotFoundException if ingredient not found', async () => {
+    const mockRepo = {
+        ...ingredientRepository,
+        getIngredientById: (id: string): Promise<Ingredient> => {
+            throw new NotFoundException("Ingredient not found");
+        }
+    }
+    await assertRejects(
+        () => getIngredientByIdService('999', mockRepo),
+        NotFoundException,
+        'Ingredient not found'
+    );
 });
 
 Deno.test('getIngredientByNomService returns ingredient by nom', async () => {
